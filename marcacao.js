@@ -13,7 +13,7 @@
 
   const DEFECTS = [
     { key: 'amassado', label: 'Amassado', short: 'AM', color: '#c56a1b', iconType: 'ring', defaultWidth: 0.12, defaultHeight: 0.12, description: 'Marca circular para deformacao localizada.' },
-    { key: 'caroco', label: 'Caroco', short: 'CA', color: '#a16207', iconType: 'dot-ring', defaultWidth: 0.1, defaultHeight: 0.1, description: 'Ponto de destaque para saliencia pontual.' },
+    { key: 'caroço', label: 'Caroço', short: 'CA', color: '#a16207', iconType: 'dot-ring', defaultWidth: 0.1, defaultHeight: 0.1, description: 'Ponto de destaque para saliencia pontual.' },
     { key: 'estiramento', label: 'Estiramento', short: 'ES', color: '#2563eb', iconType: 'stretch', defaultWidth: 0.18, defaultHeight: 0.09, description: 'Indicacao linear para alongamento da chapa.' },
     { key: 'limalha', label: 'Limalha', short: 'LI', color: '#92400e', iconType: 'shard', defaultWidth: 0.11, defaultHeight: 0.11, description: 'Triangulo de alerta para particulas e cavacos.' },
     { key: 'marca-ferramenta', label: 'Marca de ferramenta', short: 'MF', color: '#7c4a03', iconType: 'tool', defaultWidth: 0.14, defaultHeight: 0.12, description: 'Icone tecnico para marca de contato com ferramenta.' },
@@ -24,7 +24,7 @@
     { key: 'trinca', label: 'Trinca', short: 'TR', color: '#b91c1c', iconType: 'crack', defaultWidth: 0.2, defaultHeight: 0.1, description: 'Linha vermelha irregular para trinca.' },
     { key: 'vinco', label: 'Vinco', short: 'VI', color: '#c2410c', iconType: 'crease', defaultWidth: 0.2, defaultHeight: 0.09, description: 'Linha forte para vinco ou dobra marcada.' },
     { key: 'transbordo', label: 'Transbordo', short: 'TB', color: '#be123c', iconType: 'overflow', defaultWidth: 0.18, defaultHeight: 0.1, description: 'Marcador de fluxo para excesso ou transbordo.' },
-    { key: 'corrosao', label: 'Corrosao', short: 'CO', color: '#9a3412', iconType: 'corrosion', defaultWidth: 0.12, defaultHeight: 0.12, description: 'Sinalizacao oxidada para pontos de corrosao.' },
+    { key: 'corrosão', label: 'Corrosão', short: 'CO', color: '#9a3412', iconType: 'corrosion', defaultWidth: 0.12, defaultHeight: 0.12, description: 'Sinalizacao oxidada para pontos de corrosao.' },
     { key: 'palete-kaizen-ok', label: 'Palete para Kaizen, Pecas OK', short: 'OK', color: '#166534', iconType: 'ok', defaultWidth: 0.15, defaultHeight: 0.11, description: 'Selo verde para palete de Kaizen e peca aprovada.' },
     { key: 'marca-oleo', label: 'Marca de oleo', short: 'MO', color: '#1d4ed8', iconType: 'oil', defaultWidth: 0.11, defaultHeight: 0.11, description: 'Gota destacada para residuo ou marca de oleo.' },
     { key: 'furo-obstruido', label: 'Furo obstruido', short: 'FO', color: '#334155', iconType: 'blocked-hole', defaultWidth: 0.11, defaultHeight: 0.11, description: 'Circulo bloqueado para furo obstruido.' },
@@ -184,7 +184,7 @@
       button.style.setProperty('--defect-color', defect.color);
       button.innerHTML =
         '<span class="defect-icon">' + buildDefectIcon(defect) + '</span>' +
-        '<span>' +
+        '<span class="defect-option-copy">' +
           '<span class="defect-option-name">' + defect.label + '</span>' +
           '<span class="defect-option-code">' + defect.short + '</span>' +
         '</span>';
