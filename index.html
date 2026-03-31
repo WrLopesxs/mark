@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marcação de Defeito</title>
+  <title>Marcacao de Defeitos</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./marcacao.css">
@@ -11,23 +11,23 @@
 
 <body>
   <main class="page-shell">
-    
     <section class="hero-card">
       <div class="hero-copy">
         <p class="eyebrow">Toyota QC</p>
-        <h1>Marcação de Defeito</h1>
+        <h1>Marcacao padronizada de defeitos</h1>
+        <p class="hero-text">
+          Selecione um defeito padronizado, clique sobre a peca e ajuste o marcador com poucos movimentos.
+        </p>
       </div>
 
       <div class="status-panel">
         <p class="status-label">Status</p>
-        <p class="status-value" id="statusText">Aguardando parâmetros do registro.</p>
+        <p class="status-value" id="statusText">Aguardando parametros do registro.</p>
       </div>
     </section>
 
     <section class="workspace-grid">
-      
       <aside class="side-card">
-
         <div class="card-head">
           <h2>Registro</h2>
           <button class="ghost-btn" id="reloadButton" type="button">Recarregar</button>
@@ -45,7 +45,7 @@
           </label>
 
           <label class="field">
-            <span>Defeito</span>
+            <span>Defeito do registro</span>
             <input id="defectType" type="text" readonly>
           </label>
 
@@ -55,59 +55,68 @@
           </label>
 
           <label class="field">
-            <span>Usuário</span>
+            <span>Usuario</span>
             <input id="userName" type="text" placeholder="Obrigatorio" required>
           </label>
         </div>
 
         <div class="action-stack">
-          <button class="primary-btn" id="loadImageButton">Buscar imagem da peça</button>
-          <button class="secondary-btn" id="saveButton">Salvar marcação</button>
-          <button class="ghost-btn" id="clearButton">Limpar desenho</button>
+          <button class="primary-btn" id="loadImageButton" type="button">Buscar imagem da peca</button>
+          <button class="secondary-btn" id="saveButton" type="button">Salvar marcacao</button>
+          <button class="ghost-btn" id="removeSelectedButton" type="button">Remover selecionado</button>
+          <button class="ghost-btn" id="clearButton" type="button">Limpar marcadores</button>
         </div>
 
-        <div class="tool-box">
-          <div class="card-head">
-            <h2>Ferramentas</h2>
+        <section class="selection-box">
+          <div class="card-head compact-head">
+            <div>
+              <h2>Defeitos padronizados</h2>
+              <p class="hint">Escolha um tipo e clique na peca.</p>
+            </div>
+            <span class="pill" id="markerCount">0 marcadores</span>
           </div>
 
-          <label class="field">
-            <span>Cor</span>
-            <input id="brushColor" type="color" value="#e11d48">
-          </label>
+          <div class="selected-defect-card" id="selectedDefectCard">
+            <div class="selected-defect-icon" id="selectedDefectIcon"></div>
+            <div>
+              <p class="selected-defect-label">Defeito selecionado</p>
+              <h3 id="selectedDefectName">Nenhum</h3>
+              <p id="selectedDefectHint">Selecione um item da lista para marcar a peca.</p>
+            </div>
+          </div>
 
-          <label class="field">
-            <span>Espessura</span>
-            <input id="brushSize" type="range" min="2" max="24" value="8">
-          </label>
-
-          <p id="brushPreview">Espessura atual: 8 px</p>
-        </div>
-
+          <div id="defectPalette" class="defect-palette" aria-label="Lista de defeitos"></div>
+        </section>
       </aside>
 
-      <section class="canvas-card">
+      <section class="marker-card">
         <div class="card-head">
           <div>
-            <h2>Canvas de marcação</h2>
+            <h2>Area de marcacao</h2>
             <p id="canvasSubtitle">Nenhuma imagem carregada.</p>
           </div>
-          <span id="canvasMode">Pronto</span>
+          <span id="canvasMode" class="pill">Pronto</span>
         </div>
 
-        <div id="canvasStage" class="canvas-stage">
-          <img id="baseImage">
-          <canvas id="annotationCanvas"></canvas>
-          <div id="canvasEmpty" class="canvas-empty">
-            <p>A imagem da peça vai aparecer aqui.</p>
+        <div class="stage-frame">
+          <div id="canvasStage" class="marker-stage">
+            <div id="stageSurface" class="stage-surface">
+              <img id="baseImage" alt="Peca para marcacao">
+              <div id="markerLayer" class="marker-layer" aria-live="polite"></div>
+              <div id="canvasEmpty" class="canvas-empty">
+                <p>A imagem da peca vai aparecer aqui.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="stage-help">
+            <p>Clique na imagem para inserir o marcador selecionado. Arraste para reposicionar e use o canto do marcador para redimensionar.</p>
           </div>
         </div>
       </section>
-
     </section>
   </main>
 
-  <!-- 🔥 CAMPOS OCULTOS (ESSENCIAL) -->
   <input id="apiUrl" type="hidden">
   <input id="manualImageUrl" type="hidden">
 
